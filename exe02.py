@@ -16,10 +16,20 @@ print(c, d)
 
 # 列表生成试
 
-list1 = [random.randint(0,100) for i in range(10)]
+list1 = [random.randint(0, 100) for i in range(10)]
 print(list1)
-
 
 str1 = "abcd bacd bdca abcd bcba"
 
 print(str1.strip('ab'))
+
+a = 2
+b = 3
+if a == 2:
+    print(2)
+    if b == 3:
+        print(4)
+else:
+    print(2)
+
+
