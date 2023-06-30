@@ -26,4 +26,9 @@ else:
 # 二重循环里面的break 和 continue 用于控制本层循环
 
 
-
+for i in range(10):
+    i += 1
+    print(i, end=' ')
+    print(i, end=' ')
+    aa = 1
+print('\n',aa)
