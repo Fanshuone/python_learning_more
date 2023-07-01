@@ -98,4 +98,3 @@ print(list(map(fun3,a)))
 # 条件表达式语法
 print("在" if 1 else '不在')
 
-with open()
