@@ -20,8 +20,12 @@ with MyContextManager() as cm:
 tu = ([1,2], [3,4])
 print(type(tu))
 tu1 = tu[1:]
+
+
+
 print('tu1 ',tu1)
 print(type(tu1))
+
 tu[1][0] = 12
 
 print('tu1 ',tu1)
