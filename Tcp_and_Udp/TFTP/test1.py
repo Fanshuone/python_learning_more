@@ -2,7 +2,6 @@ rb = b'\xff\xd8'
 print(bytes(0))
 print(len(rb))
 
-
 import struct
 
 # 将字符串打包成字节序列
@@ -22,15 +21,33 @@ packed_data = struct.pack(f'{len(encoded_data)}sI', encoded_data, number)  # 使
 print(packed_data)
 print(packed_data.decode(encoding='utf-8'))
 
-print(number.to_bytes(6,'big'))
+print(number.to_bytes(6, 'big'))
 
 print("abc".encode("utf-8"))
 
-
 try:
-    a= 1
-
-except:
-    print('afaf')
+    a = 1
+    print(1 / 0)
+except Exception as e:
+    print(e)
 
 print(a)
+
+import traceback
+
+
+
+try:
+
+    y = 1 / 0
+
+except:
+    traceback.print_exc()
+
+
+
+print(1111)
+
+print(1 / 0)
+
+print(1111)

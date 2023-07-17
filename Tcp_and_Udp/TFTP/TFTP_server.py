@@ -18,11 +18,11 @@ def download(file, client_ip, client_port):
 
     except:
 
-        error_package = struct.pack('!HH5sb', 5,5, 'error'.encode('utf-8'), 0)
+        error_package = struct.pack('!HH5sb', 5, 5, 'error'.encode('utf-8'), 0)
         # 把错误数据发出给客户端
         new_socket.sendto(error_package, (client_ip, client_port))
         new_socket.close()
-        flag =False
+        flag = False
 
     # 如果文件存在， 那么需要把文件的内容切成一个个数据包发送给客户端，一个数据包包含内容为512字节
 
@@ -33,29 +33,30 @@ def download(file, client_ip, client_port):
         #     num += 1
         #     continue
         read_data = f.read(512)
-        data_package = struct.pack('!HH',3,num) + read_data
+        data_package = struct.pack('!HH', 3, num) + read_data
         # 发送数据包
         new_socket.sendto(data_package, (client_ip, client_port))
 
         # 文件内容的数据即将下载完
         if len(read_data) < 512:
-            print("客户端：%s 文件下载完成" %client_ip)
+            print("客户端：%s 文件下载完成" % client_ip)
             # 当前客户端退出
             break
 
         # 服务器接受ACK的确认数据
         recv_ack = new_socket.recvfrom(1024)
-        operator_code,ack_number = struct.unpack("!HH",recv_ack[0])
-        print("客户端： %s,确认的信息是 %s" %(client_ip,ack_number))
+        operator_code, ack_number = struct.unpack("!HH", recv_ack[0])
+        print("客户端： %s,确认的信息是 %s" % (client_ip, ack_number))
         num += 1
 
         # 保护性代码
         # 不正常的ack确认信息
-        if int(operator_code) != 4 or int(ack_number) <1:
+        if int(operator_code) != 4 or int(ack_number) < 1:
             break
     if f:
         f.close()
     new_socket.close()
+
 
 def server():
     while True:
