@@ -9,8 +9,8 @@ import os
 client = socket(AF_INET, SOCK_STREAM)
 client.connect(('192.168.5.180', 8088))
 
-# 客户端传送一个文件到服务器，new.mp4
-file_path = 'new.mp4'
+# 客户端传送一个文件到服务器，进程.mp4
+file_path = '进程.mp4'
 f = open(file_path, 'rb')
 
 # 在发送真正的文件数据之前，先准备一个报头
