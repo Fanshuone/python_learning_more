@@ -10,7 +10,7 @@ import time
 def run():
     print("当前进程%s,开始启动"%(current_thread().name))
     g_num =0
-    for i in range(500000):
+    for i in range(5000000):
         g_num +=1
     print('线程%s,执行之后g_num的值为:%s'%(current_thread().name,g_num))
 

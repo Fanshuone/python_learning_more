@@ -8,7 +8,7 @@ import time
 g_num = 0
 
 def run():
-    print("当前进程%s,开始启动"%(current_thread().name))
+    print("当前进程%s,开始启动" % current_thread().name)
     global g_num
     for i in range(500000):
         g_num +=1
@@ -16,14 +16,18 @@ def run():
 
 
 if __name__ == '__main__':
-    threads = []
+    threads=[]
 
-    for i in range(5):
-        t = Thread(target=run)
-        t.start()
-        threads.append(t)
+    start = time.process_time()
+    for i in range(10):
+        for i in range(5):
+            t = Thread(target=run)
+            t.start()
+            threads.append(t)
 
-    for j in threads:
-        j.join()
+        for j in threads:
+            j.join()
 
-    print('主线程结束，g_num的值为:%s'%g_num)
+        print('主线程结束，g_num的值为:%s'%g_num)
+
+
